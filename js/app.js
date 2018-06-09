@@ -8,7 +8,7 @@ class Enemy {
     // a helper we've provided to easily load images
     this.x = x;
     this.y = y;
-    this.speed = Math.floor(Math.random() * (300 - 100) + 100);
+    this.speed = Math.floor(Math.random() * (400 - 100) + 100);
     this.sprite = 'images/enemy-bug.png';
   }
 
@@ -36,14 +36,30 @@ class Enemy {
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
+class Player {
+  constructor(x,y) {
+    this.x = x;
+    this.y = y;
+    this.sprite = 'images/char-princess-girl.png';
+  }
 
+  update(dt) {
+  }
+
+  // Draws the player on the screen
+  render() {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+  }
+}
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-let enemy1 = new Enemy(0, 100);
-let allEnemies = [enemy1];
-
+let enemy1 = new Enemy(0, 60);
+let enemy2 = new Enemy(0, 145);
+let enemy3 = new Enemy(0, 230);
+let allEnemies = [enemy1, enemy2, enemy3];
+let player = new Player(200, 400);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
