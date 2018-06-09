@@ -1,3 +1,5 @@
+let modal = document.querySelector('.modal');
+
 // Enemies our player must avoid
 class Enemy {
   constructor(x,y) {
@@ -47,6 +49,7 @@ class Player {
   }
 
   update(dt) {
+    winGame(this);
   }
 
   // Draws the player on the screen
@@ -140,3 +143,30 @@ document.addEventListener('keyup', function(e) {
 
     player.handleInput(allowedKeys[e.keyCode]);
 });
+
+function winGame() {
+  if (points === 1) {
+    //shows congratulations popup window
+    modal.style.display = "block";
+    // playAgain();
+    // closePopUp();
+  }
+}
+
+//closes popup window, starts new game
+function closePopUp() {
+  // close.addEventListener('click', function(event) {
+  //   modal.style.display = "none";
+  //   points = 0
+  //   resetPlayer();
+  // });
+}
+
+//starts new game (play again button)
+function playAgain() {
+// again.addEventListener('click', function(event) {
+//    modal.style.display = "none";
+//    points = 0
+//    resetPlayer();
+//   });
+}
