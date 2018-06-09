@@ -1,4 +1,6 @@
 let modal = document.querySelector('.modal');
+let close = document.querySelector('.close');
+let again = document.querySelector('.play-again');
 
 // Enemies our player must avoid
 class Enemy {
@@ -113,8 +115,10 @@ let pointsCount = document.querySelector('.points');
 
 // reset player
 function resetPlayer() {
-  player.x = 200;
-  player.y = 400;
+  setTimeout(function() {
+    player.x = 200;
+    player.y = 400;
+  }, 100);
 }
 
 // check for collision between enemy and player
@@ -148,25 +152,27 @@ function winGame() {
   if (points === 1) {
     //shows congratulations popup window
     modal.style.display = "block";
-    // playAgain();
-    // closePopUp();
+    playAgain();
+    closePopUp();
   }
 }
 
 //closes popup window, starts new game
 function closePopUp() {
-  // close.addEventListener('click', function(event) {
-  //   modal.style.display = "none";
-  //   points = 0
-  //   resetPlayer();
-  // });
+  close.addEventListener('click', function(event) {
+    modal.style.display = "none";
+    points = 0;
+    pointsCount.innerHTML = points;
+    resetPlayer();
+  });
 }
 
 //starts new game (play again button)
 function playAgain() {
-// again.addEventListener('click', function(event) {
-//    modal.style.display = "none";
-//    points = 0
-//    resetPlayer();
-//   });
+  again.addEventListener('click', function(event) {
+     modal.style.display = "none";
+     points = 0;
+     pointsCount.innerHTML = points;
+     resetPlayer();
+  });
 }
