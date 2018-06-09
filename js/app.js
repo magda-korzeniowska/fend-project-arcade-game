@@ -86,6 +86,8 @@ class Player {
         case 'up':
           if (this.y - 80 < 0) {
             resetPlayer();
+            points++;
+            pointsCount.innerHTML = points;
           } else {
             this.y -= 80;
           }
@@ -93,6 +95,18 @@ class Player {
     }
   }
 }
+
+// Now instantiate your objects.
+// Place all enemy objects in an array called allEnemies
+// Place the player object in a variable called player
+let enemy1 = new Enemy(-50, 60);
+let enemy2 = new Enemy(-100, 145);
+let enemy3 = new Enemy(-150, 230);
+let allEnemies = [enemy1, enemy2, enemy3];
+let player = new Player(200, 400);
+
+let points = 0;
+let pointsCount = document.querySelector('.points');
 
 // reset player
 function resetPlayer() {
@@ -109,20 +123,10 @@ function checkCollision(oneEnemy) {
     60 + player.y > oneEnemy.y) {
       resetPlayer();
       console.log('collision');
+      points = 0;
+      pointsCount.innerHTML = points;
     }
 }
-
-// Now instantiate your objects.
-// Place all enemy objects in an array called allEnemies
-// Place the player object in a variable called player
-let enemy1 = new Enemy(-50, 60);
-let enemy2 = new Enemy(-100, 145);
-let enemy3 = new Enemy(-150, 230);
-let allEnemies = [enemy1, enemy2, enemy3];
-let player = new Player(200, 400);
-
-let points = 0;
-let pointsCount = document.querySelector('.points');
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
