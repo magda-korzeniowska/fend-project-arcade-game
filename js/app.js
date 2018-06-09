@@ -121,6 +121,9 @@ let enemy3 = new Enemy(-150, 230);
 let allEnemies = [enemy1, enemy2, enemy3];
 let player = new Player(200, 400);
 
+let points = 0;
+let pointsCount = document.querySelector('.points');
+
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function(e) {
