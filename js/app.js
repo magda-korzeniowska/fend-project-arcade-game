@@ -25,6 +25,7 @@ class Enemy {
     if (this.x >= 500) {
       this.x = -100;
     }
+
     // Checks for collision with enemies and walls
     checkCollision(this);
   }
@@ -52,6 +53,45 @@ class Player {
   render() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
   }
+
+  handleInput(keyPress) {
+    switch(keyPress) {
+      case 'left':
+        if (this.x - 100 < 0) {
+          this.x = 0;
+        } else {
+          this.x -= 100;
+        }
+        console.log('left');
+        break;
+
+      case 'right':
+        if (this.x + 100 > 400) {
+          this.x = 400;
+        } else {
+          this.x += 100;
+        }
+        console.log('right');
+        break;
+
+        case 'down':
+          if (this.y + 80 > 400) {
+            this.y = 400;
+          } else {
+            this.y += 80;
+          }
+          console.log('down');
+          break;
+
+        case 'up':
+          if (this.y - 80 < 0) {
+            resetPlayer();
+          } else {
+            this.y -= 80;
+          }
+          console.log('up');
+    }
+  }
 }
 
 // reset player
@@ -68,16 +108,16 @@ function checkCollision(oneEnemy) {
     player.y < oneEnemy.y + 60 &&
     60 + player.y > oneEnemy.y) {
       resetPlayer();
-      console.log('collission');
+      console.log('collision');
     }
 }
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-let enemy1 = new Enemy(0, 60);
-let enemy2 = new Enemy(0, 145);
-let enemy3 = new Enemy(0, 230);
+let enemy1 = new Enemy(-50, 60);
+let enemy2 = new Enemy(-100, 145);
+let enemy3 = new Enemy(-150, 230);
 let allEnemies = [enemy1, enemy2, enemy3];
 let player = new Player(200, 400);
 
