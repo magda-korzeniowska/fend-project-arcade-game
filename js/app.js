@@ -8,7 +8,7 @@ class Enemy {
     // a helper we've provided to easily load images
     this.x = x;
     this.y = y;
-    this.speed = Math.floor(Math.random() * (400 - 100) + 100);
+    this.speed = Math.floor(Math.random() * (350 - 100) + 100);
     this.sprite = 'images/enemy-bug.png';
   }
 
@@ -25,6 +25,8 @@ class Enemy {
     if (this.x >= 500) {
       this.x = -100;
     }
+    // Checks for collision with enemies and walls
+    checkCollision(this);
   }
 
 // Draw the enemy on the screen, required method for game
@@ -50,6 +52,24 @@ class Player {
   render() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
   }
+}
+
+// reset player
+function resetPlayer() {
+  player.x = 200;
+  player.y = 400;
+}
+
+// check for collision between enemy and player
+function checkCollision(oneEnemy) {
+  if (
+    player.x < oneEnemy.x + 80 &&
+    player.x + 80 > oneEnemy.x &&
+    player.y < oneEnemy.y + 60 &&
+    60 + player.y > oneEnemy.y) {
+      resetPlayer();
+      console.log('collission');
+    }
 }
 
 // Now instantiate your objects.
