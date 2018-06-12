@@ -1,3 +1,5 @@
+'use strict';
+
 let modal = document.querySelector('.modal');
 let close = document.querySelector('.close');
 let again = document.querySelector('.play-again');
